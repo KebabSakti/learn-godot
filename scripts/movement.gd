@@ -20,6 +20,7 @@ func move(direction : Vector2, attacking : bool):
 		if attacking:
 			animation.play("attack")
 		else:
-			animation.play('idle')
+			if !animation.is_playing():
+				animation.play('idle')
 
 	body.move_and_slide()

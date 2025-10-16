@@ -215,7 +215,7 @@ _data = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_sch2c")
-frame = 10
+frame = 15
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 rotation = 3.1415927
@@ -223,9 +223,11 @@ scale = Vector2(1, -1)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_1xqns")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 23.5)
 shape = SubResource("RectangleShape2D_1xqns")
 
