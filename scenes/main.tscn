@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d07gpxtfy3nuj"]
+
+[ext_resource type="PackedScene" uid="uid://ciaeh5u8vi8uw" path="res://scenes/warrior.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bm4vdaacw1bbh" path="res://scenes/bowman.tscn" id="2_0wfyh"]
+
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Bowman" parent="." instance=ExtResource("2_0wfyh")]
+position = Vector2(974, 304)
+
+[node name="Warrior" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(129, 312)
