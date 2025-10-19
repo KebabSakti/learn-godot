@@ -279,7 +279,7 @@ _data = {
 &"run": SubResource("Animation_smehm")
 }
 
-[node name="Warrior" type="CharacterBody2D"]
+[node name="Warrior" type="CharacterBody2D" groups=["blue"]]
 collision_layer = 2
 script = ExtResource("1_g2els")
 

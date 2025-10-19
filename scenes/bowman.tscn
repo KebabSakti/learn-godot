@@ -1,10 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://bm4vdaacw1bbh"]
+[gd_scene load_steps=34 format=3 uid="uid://bm4vdaacw1bbh"]
 
 [ext_resource type="Texture2D" uid="uid://togymvrd5ya7" path="res://assets/Units/Red Units/Archer/Archer_Idle.png" id="1_hputa"]
 [ext_resource type="Script" uid="uid://bvu5dn16uuljx" path="res://scripts/movement.gd" id="1_ofgbw"]
+[ext_resource type="Script" uid="uid://dd11aytwouvjv" path="res://scripts/bowman.gd" id="1_u3xdu"]
 [ext_resource type="Texture2D" uid="uid://cjd0ipf86xtyd" path="res://assets/Units/Red Units/Archer/Archer_Run.png" id="2_1xqns"]
 [ext_resource type="Texture2D" uid="uid://cd0obs25lophr" path="res://assets/Units/Red Units/Archer/Archer_Shoot.png" id="3_prgeu"]
 [ext_resource type="Script" uid="uid://0k2f66jv1usb" path="res://scripts/enemy.gd" id="5_1xqns"]
+[ext_resource type="PackedScene" uid="uid://c4fy1pjyctifr" path="res://scenes/arrow.tscn" id="6_prgeu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3xdu"]
 atlas = ExtResource("1_hputa")
@@ -210,12 +212,13 @@ _data = {
 &"run": SubResource("Animation_prgeu")
 }
 
-[node name="Bowman" type="CharacterBody2D"]
+[node name="Bowman" type="CharacterBody2D" groups=["red"]]
+script = ExtResource("1_u3xdu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_sch2c")
-frame = 15
+frame = 10
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 rotation = 3.1415927
@@ -223,11 +226,9 @@ scale = Vector2(1, -1)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
-visible = false
 shape = SubResource("CircleShape2D_1xqns")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 23.5)
 shape = SubResource("RectangleShape2D_1xqns")
 
@@ -254,6 +255,8 @@ script = ExtResource("5_1xqns")
 movement = NodePath("../Movement")
 timer = NodePath("../Timer")
 metadata/_custom_type_script = "uid://0k2f66jv1usb"
+
+[node name="Arrow" parent="." instance=ExtResource("6_prgeu")]
 
 [connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="Enemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/Area2D" to="Enemy" method="_on_area_2d_body_exited"]

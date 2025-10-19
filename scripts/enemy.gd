@@ -1,31 +1,27 @@
 class_name Enemy
 extends Node
 
-@export var movement : Movement
-@export var timer : Timer
+@export var movement: Movement
+@export var timer: Timer
 
-var chase : bool = true
-var attacking : bool
-var direction : Vector2
-var enemy : CharacterBody2D
-var player : CharacterBody2D
+var player: CharacterBody2D
+var enemy: CharacterBody2D
+var direction: Vector2 = Vector2.ZERO
+var chasing := true
+var attacking := false
 
 func _ready() -> void:
-	var main = get_tree().current_scene
-	player = main.get_node('Warrior')
 	enemy = get_parent()
+	player = get_tree().current_scene.get_node("Warrior")
+	var players = get_tree().get_nodes_in_group('blue')
+	print(players)
 
 func _physics_process(_delta: float) -> void:
-	if chase:
-		direction = (player.position - enemy.position).normalized()
-	else:
-		direction = Vector2.ZERO
-	
-	if movement:
-		movement.move(direction, attacking)
+	direction = (player.position - enemy.position).normalized() if chasing else Vector2.ZERO
+	movement.move(direction, attacking)
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	chase = false
+	chasing = false
 	attacking = true
 	timer.stop()
 
@@ -34,4 +30,4 @@ func _on_area_2d_body_exited(_body: Node2D) -> void:
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	chase = true
+	chasing = true
