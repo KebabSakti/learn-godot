@@ -169,7 +169,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajfbt"]
-size = Vector2(34, 101)
+size = Vector2(29, 101)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbj4a"]
 size = Vector2(34, 20)
@@ -250,7 +250,7 @@ sprite_frames = SubResource("SpriteFrames_bw2w3")
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
-position = Vector2(56, 9.5)
+position = Vector2(53.5, 9.5)
 shape = SubResource("RectangleShape2D_ajfbt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
