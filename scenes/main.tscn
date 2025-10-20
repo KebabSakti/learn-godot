@@ -12,8 +12,8 @@ y_sort_enabled = true
 [node name="Swordman" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(179, 364)
 
-[node name="Dummy" type="StaticBody2D" parent="."]
-position = Vector2(-86, 5)
+[node name="Dummy" type="StaticBody2D" parent="." groups=["red"]]
+position = Vector2(513, -3)
 
 [node name="Sprite2D" type="Sprite2D" parent="Dummy"]
 position = Vector2(398, 370)
