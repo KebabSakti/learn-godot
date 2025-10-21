@@ -169,7 +169,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajfbt"]
-size = Vector2(50, 107)
+size = Vector2(51, 107)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nw64k"]
 size = Vector2(123, 107)
@@ -273,13 +273,15 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="Redswordman" type="CharacterBody2D" node_paths=PackedStringArray("body", "sprite", "animation") groups=["red"]]
+[node name="Redswordman" type="CharacterBody2D" node_paths=PackedStringArray("body", "sprite", "animation", "health_bar") groups=["red"]]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_nw64k")
 damage = 10
 body = NodePath(".")
 sprite = NodePath("AnimatedSprite2D")
 animation = NodePath("AnimationPlayer")
+health_bar = NodePath("ProgressBar")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(-1, 1)
@@ -287,13 +289,15 @@ sprite_frames = SubResource("SpriteFrames_bw2w3")
 frame = 8
 
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
-position = Vector2(43, 6.5)
+position = Vector2(42.5, 6.5)
 shape = SubResource("RectangleShape2D_ajfbt")
 
 [node name="Hurtbox" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hurtbox"]
@@ -318,7 +322,6 @@ offset_right = 25.0
 offset_bottom = 51.0
 theme_override_styles/background = SubResource("StyleBoxFlat_nw64k")
 theme_override_styles/fill = SubResource("StyleBoxFlat_s8r6d")
-show_percentage = false
 
 [connection signal="body_entered" from="AnimatedSprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/Hitbox" to="." method="_on_hitbox_body_exited"]

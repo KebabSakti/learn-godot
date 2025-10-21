@@ -6,8 +6,11 @@ class_name Character extends Node
 @export var body : PhysicsBody2D
 @export var sprite : AnimatedSprite2D
 @export var animation : AnimationPlayer
+@export var health_bar : ProgressBar
 
 func process(direction : Vector2, isAttacking : bool):
+	health_bar.set_value_no_signal(health)
+	
 	if isAttacking:
 		body.velocity = Vector2.ZERO
 		animation.play('attack')
@@ -25,20 +28,3 @@ func process(direction : Vector2, isAttacking : bool):
 			animation.play('idle')
 		
 		body.move_and_slide()
-		
-func get_target() -> PhysicsBody2D:
-	var result
-	var node
-	
-	if is_in_group('blue'):
-		node = get_tree().get_nodes_in_group('red')
-	elif is_in_group('red'):
-		node = get_tree().get_nodes_in_group('blue')
-		
-	if node.size() > 0:
-		node = node.pick_random()
-	
-	if node:
-		result = node as PhysicsBody2D
-		
-	return result
