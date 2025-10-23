@@ -8,6 +8,16 @@ class_name Character extends Node
 @export var animation : AnimationPlayer
 @export var health_bar : ProgressBar
 @export var label : Label
+@export var effect : AnimationPlayer
+@export var name_label : Label
+
+var blue := 0
+var red := 0
+
+func _ready() -> void:
+	#print(self.name, " animation id:", animation.get_instance_id())
+	#print(self.name, " effect id:", effect.get_instance_id())
+	pass
 
 func process(direction : Vector2, isAttacking : bool):
 	if label:
