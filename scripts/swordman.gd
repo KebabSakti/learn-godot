@@ -43,9 +43,9 @@ func _on_hitbox_body_exited(_body: Node2D) -> void:
 	isAttacking = false
 
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
-	if (_body.health > 0):
-		_body.health -= self.damage
-	else:
+	_body.health -= self.damage
+	
+	if _body.health <= 0:
 		_body.queue_free()
 		self.health += 30
-		self.damage += 2
+		self.damage += 5

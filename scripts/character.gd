@@ -7,8 +7,12 @@ class_name Character extends Node
 @export var sprite : AnimatedSprite2D
 @export var animation : AnimationPlayer
 @export var health_bar : ProgressBar
+@export var label : Label
 
 func process(direction : Vector2, isAttacking : bool):
+	if label:
+		label.text = str(health)
+		
 	health_bar.set_value_no_signal(health)
 	
 	if isAttacking:

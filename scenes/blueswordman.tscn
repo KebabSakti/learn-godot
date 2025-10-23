@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bls0swucq3385"]
+[gd_scene load_steps=56 format=3 uid="uid://bls0swucq3385"]
 
 [ext_resource type="Texture2D" uid="uid://beb2cbvk8d40s" path="res://assets/Units/Blue Units/Warrior/Warrior_Idle.png" id="1_bbj4a"]
 [ext_resource type="Script" uid="uid://b7t6lmnfwdqac" path="res://scripts/swordman.gd" id="1_vubl6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://beltmdefbv0yx" path="res://assets/hitflash.gdshader" id="2_cvlbl"]
 [ext_resource type="Texture2D" uid="uid://ctdjm5vjiauc5" path="res://assets/Units/Blue Units/Warrior/Warrior_Attack1.png" id="3_vubl6"]
 [ext_resource type="Texture2D" uid="uid://bkxtlgn738ava" path="res://assets/Units/Blue Units/Warrior/Warrior_Attack2.png" id="4_53xh1"]
+[ext_resource type="Texture2D" uid="uid://cvcilg4c8unmg" path="res://assets/847.png" id="7_2gdt7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2gdt7"]
 shader = ExtResource("2_cvlbl")
@@ -100,6 +101,50 @@ region = Rect2(384, 0, 192, 192)
 atlas = ExtResource("4_53xh1")
 region = Rect2(576, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qx1e"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itgbt"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqc2f"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd6vi"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hvxy"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(256, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2den"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(320, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y16xe"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(384, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dmh7"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(448, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8fkc"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(512, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ifu7"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(576, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq70p"]
+atlas = ExtResource("7_2gdt7")
+region = Rect2(640, 256, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_bw2w3"]
 animations = [{
 "frames": [{
@@ -168,6 +213,39 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8x3p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qx1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itgbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqc2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd6vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hvxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2den")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y16xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dmh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8fkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq70p")
 }],
 "loop": true,
 "name": &"default",
@@ -268,10 +346,28 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11, 12, 13]
 }
 
+[sub_resource type="Animation" id="Animation_tjlsc"]
+resource_name = "explode"
+length = 1.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vubl6"]
 _data = {
 &"RESET": SubResource("Animation_ajfbt"),
 &"attack": SubResource("Animation_53xh1"),
+&"explode": SubResource("Animation_tjlsc"),
 &"hit": SubResource("Animation_cvlbl"),
 &"idle": SubResource("Animation_bbj4a"),
 &"run": SubResource("Animation_vubl6")
@@ -297,7 +393,10 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="Blueswordman" type="CharacterBody2D" node_paths=PackedStringArray("body", "sprite", "animation", "health_bar") groups=["blue"]]
+[sub_resource type="LabelSettings" id="LabelSettings_2gdt7"]
+font_size = 8
+
+[node name="Blueswordman" type="CharacterBody2D" node_paths=PackedStringArray("body", "sprite", "animation", "health_bar", "label") groups=["blue"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_vubl6")
@@ -306,10 +405,12 @@ body = NodePath(".")
 sprite = NodePath("AnimatedSprite2D")
 animation = NodePath("AnimationPlayer")
 health_bar = NodePath("ProgressBar")
+label = NodePath("ProgressBar/Label")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_2gdt7")
 sprite_frames = SubResource("SpriteFrames_bw2w3")
+frame = 32
 
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
 collision_layer = 0
@@ -345,8 +446,16 @@ offset_right = 23.0
 offset_bottom = 49.0
 theme_override_styles/background = SubResource("StyleBoxFlat_goou2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cvlbl")
+step = 10.0
 allow_greater = true
 show_percentage = false
+
+[node name="Label" type="Label" parent="ProgressBar"]
+layout_mode = 0
+offset_right = 46.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_2gdt7")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="AnimatedSprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/Hitbox" to="." method="_on_hitbox_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://stru2wi11n8a"]
+[gd_scene load_steps=40 format=3 uid="uid://stru2wi11n8a"]
 
 [ext_resource type="Script" uid="uid://b7t6lmnfwdqac" path="res://scripts/swordman.gd" id="1_nw64k"]
 [ext_resource type="Texture2D" uid="uid://dd3ke1lbsfb7n" path="res://assets/Units/Red Units/Warrior/Warrior_Idle.png" id="2_nw64k"]
@@ -273,7 +273,10 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="Redswordman" type="CharacterBody2D" node_paths=PackedStringArray("body", "sprite", "animation", "health_bar") groups=["red"]]
+[sub_resource type="LabelSettings" id="LabelSettings_nw64k"]
+font_size = 8
+
+[node name="Redswordman" type="CharacterBody2D" node_paths=PackedStringArray("body", "sprite", "animation", "health_bar", "label") groups=["red"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_nw64k")
@@ -282,6 +285,7 @@ body = NodePath(".")
 sprite = NodePath("AnimatedSprite2D")
 animation = NodePath("AnimationPlayer")
 health_bar = NodePath("ProgressBar")
+label = NodePath("ProgressBar/Label")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(-1, 1)
@@ -322,6 +326,15 @@ offset_right = 25.0
 offset_bottom = 51.0
 theme_override_styles/background = SubResource("StyleBoxFlat_nw64k")
 theme_override_styles/fill = SubResource("StyleBoxFlat_s8r6d")
+allow_greater = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="ProgressBar"]
+layout_mode = 0
+offset_right = 46.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_nw64k")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="AnimatedSprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/Hitbox" to="." method="_on_hitbox_body_exited"]
